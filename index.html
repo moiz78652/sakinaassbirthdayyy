@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Sakina - Happy Birthday!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500;600&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #ff6b9d;
+            --secondary: #d63384;
+            --accent: #4CAF50;
+            --text: #333;
+            --light: #fff;
+            --dark: #222;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f9c5d1 0%, #f5a9c8 50%, #c2e9fb 100%);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        
+        /* Welcome Animation Overlay */
+        #welcomeOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 1s ease;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .welcome-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease forwards 0.5s;
+            line-height: 1.2;
+        }
+        
+        .welcome-subtext {
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            color: white;
+            opacity: 0;
+            animation: fadeIn 2s ease forwards 1.5s;
+            max-width: 600px;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+        
+        .enter-btn {
+            background: white;
+            color: #ff6b9d;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 2.5s;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            width: 80%;
+            max-width: 300px;
+        }
+        
+        .enter-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .heart-animation {
+            font-size: clamp(3rem, 10vw, 4rem);
+            color: white;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: heartbeat 1.2s infinite ease-in-out forwards 1s;
+        }
+        
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 30px 0 20px;
+            position: relative;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            color: var(--secondary);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            color: #6c757d;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            padding: 0 15px;
+        }
+        
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+            padding: 0 10px;
+        }
+        
+        .nav-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            min-width: 140px;
+            max-width: 200px;
+            justify-content: center;
+            white-space: nowrap;
+        }
+        
+        .nav-btn:hover {
+            background: #ff4d8d;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav-btn i {
+            font-size: 1.1rem;
+        }
+        
+        /* Memory Gallery */
+        .memory-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+            padding: 0 10px;
+        }
+        
+        .memory-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .memory-card:nth-child(1) { animation-delay: 0.1s; }
+        .memory-card:nth-child(2) { animation-delay: 0.2s; }
+        .memory-card:nth-child(3) { animation-delay: 0.3s; }
+        .memory-card:nth-child(4) { animation-delay: 0.4s; }
+        .memory-card:nth-child(5) { animation-delay: 0.5s; }
+        .memory-card:nth-child(6) { animation-delay: 0.6s; }
+        
+        .memory-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .image-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            background-color: #f5f5f5; /* Fallback background */
+            cursor: pointer;
+        }
+        
+        .memory-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .memory-card:hover .memory-img {
+            transform: scale(1.05);
+        }
+        
+        .memory-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .memory-title {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .memory-date {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+        
+        .memory-desc {
+            color: #555;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        
+        /* Image Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            animation: zoomIn 0.3s ease;
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: -10px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            transform: scale(1.2);
+        }
+        
+        .modal-title {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 1.2rem;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .prev-btn {
+            left: 20px;
+        }
+        
+        .next-btn {
+            right: 20px;
+        }
+        
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        /* Message Section */
+        .message-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .message-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2rem, 6vw, 3rem);
+            color: var(--secondary);
+            text-align: center;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+        
+        .message-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .message-text p {
+            margin-bottom: 20px;
+        }
+        
+        .highlight {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        /* Interactive Section */
+        .interactive-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .interactive-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2rem, 6vw, 3rem);
+            color: var(--secondary);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .question {
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .funny-text {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-style: italic;
+            margin-bottom: 25px;
+            padding: 12px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            display: inline-block;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.4;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+            padding: 0 10px;
+        }
+        
+        .choice-btn {
+            padding: 15px 35px;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            min-width: 100px;
+            flex: 1;
+            max-width: 150px;
+        }
+        
+        .yes-btn {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .no-btn {
+            background: #f44336;
+            color: white;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        
+        .yes-btn:hover, .yes-btn:active {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 15px;
+            background: #f8f9fa;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .result-img-container {
+            width: 100%;
+            max-width: 300px;
+            margin: 20px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: #f5f5f5; /* Fallback background */
+        }
+        
+        .result-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            justify-content: center;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .whatsapp-btn:hover, .whatsapp-btn:active {
+            background: #1da851;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+        
+        .popup-text {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        
+        /* Party Popper Container */
+        .party-popper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+        
+        .popper-particle {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            animation: popper-fall 2s ease-out forwards;
+        }
+        
+        @keyframes popper-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(calc(100vh + 100px)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Confetti Container */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            overflow: hidden;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            animation: confetti-fall 3s linear forwards;
+        }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(calc(100vh + 100px)) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            color: #6c757d;
+            font-size: 0.95rem;
+            margin-top: 30px;
+        }
+        
+        /* Loading Spinner */
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0.9; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        
+        .shake {
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .memory-gallery {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 0 5px;
+            }
+            
+            .memory-card {
+                margin-bottom: 10px;
+            }
+            
+            .image-container {
+                height: 220px;
+            }
+            
+            .memory-content {
+                padding: 15px;
+            }
+            
+            .message-section, .interactive-section {
+                padding: 20px 15px;
+                margin: 30px 0;
+                border-radius: 15px;
+            }
+            
+            .button-container {
+                gap: 15px;
+            }
+            
+            .choice-btn {
+                padding: 12px 25px;
+                font-size: 1.2rem;
+                min-width: 90px;
+            }
+            
+            .nav-btn {
+                padding: 10px 15px;
+                font-size: 0.95rem;
+                min-width: 120px;
+            }
+            
+            .funny-text {
+                font-size: 1rem;
+                padding: 10px;
+                margin: 0 5px 20px;
+            }
+            
+            .whatsapp-btn {
+                padding: 12px 20px;
+                font-size: 1.1rem;
+            }
+            
+            .modal-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 2rem;
+            }
+            
+            .prev-btn {
+                left: 10px;
+            }
+            
+            .next-btn {
+                right: 10px;
+            }
+            
+            .close-modal {
+                top: -35px;
+                right: 0;
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .welcome-text {
+                font-size: 2.2rem;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .question {
+                font-size: 1.5rem;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .choice-btn {
+                width: 100%;
+                max-width: 200px;
+            }
+            
+            .image-container {
+                height: 200px;
+            }
+            
+            .modal-content {
+                max-width: 95%;
+                max-height: 85%;
+            }
+        }
+        
+        /* Touch Device Optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .nav-btn:hover, .choice-btn:hover, .whatsapp-btn:hover {
+                transform: none;
+            }
+            
+            .nav-btn:active, .choice-btn:active, .whatsapp-btn:active {
+                transform: scale(0.98);
+            }
+            
+            .memory-card:hover {
+                transform: none;
+            }
+            
+            .memory-card:active {
+                transform: scale(0.99);
+            }
+            
+            .modal-nav:hover {
+                transform: translateY(-50%) scale(1);
+            }
+            
+            .close-modal:hover {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Welcome Animation Overlay -->
+    <div id="welcomeOverlay">
+        <div class="heart-animation">
+            <i class="fas fa-heart"></i>
+        </div>
+        <div class="welcome-text">FOR YOU SAKINAAA</div>
+        <div class="welcome-subtext">A special collection of our memories, created with love for your birthday</div>
+        <button class="enter-btn" id="enterBtn">Enter the Memories</button>
+    </div>
+    
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <button class="modal-nav prev-btn" id="prevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <img id="modalImage" class="modal-image" alt="Memory Photo">
+            <button class="modal-nav next-btn" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div id="modalTitle" class="modal-title"></div>
+        </div>
+    </div>
+    
+    <div class="container" id="mainContent" style="display: none;">
+        <!-- Header -->
+        <header>
+            <h1 class="floating">For My Sakina</h1>
+            <p class="subtitle">A collection of our special memories and moments together</p>
+            
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <button class="nav-btn" id="memoriesBtn">
+                    <i class="fas fa-heart"></i> Our Memories
+                </button>
+                <button class="nav-btn" id="messageBtn">
+                    <i class="fas fa-envelope"></i> Special Message
+                </button>
+                <button class="nav-btn" id="interactiveBtn">
+                    <i class="fas fa-gamepad"></i> Interactive Part
+                </button>
+            </div>
+        </header>
+        
+        <!-- Memory Gallery Section -->
+        <section id="memoriesSection">
+            <h2 style="text-align: center; font-family: 'Dancing Script', cursive; font-size: clamp(2rem, 6vw, 3rem); color: #d63384; margin-bottom: 25px;">Our Cherished Memories</h2>
+            <div class="memory-gallery">
+                <!-- Memory cards will be dynamically generated with local images -->
+            </div>
+        </section>
+        
+        <!-- Message Section -->
+        <section id="messageSection" class="message-section hidden">
+            <h2>A Message For You</h2>
+            <div class="message-text">
+                <p>Dear Sakina,</p>
+                <br>
+                <p>First of all, <span class="highlight">Happy Birthday!</span> I know this might come as a surprise, and I understand we haven't been in touch for a while.</p>
+                <br>
+                <p>I want you to know that I created this website for your birthday. I had planned to give it to you as a special gift, but things didn't work out between us at that time.</p>
+                <br>
+                <p>I know you must have felt bad that I didn't wish you on your birthday, but more than that, I want you to know how much it hurt me too. Not being able to celebrate your special day with you was really difficult for me.</p>
+                <br>
+                <p>This website is filled with memories of our time together - the laughter, the conversations, and all those moments that made our friendship special. I cherish every single one of them.</p>
+                <br>
+                <p>No matter where life takes us, I'll always treasure our friendship and the bond we shared.</p>
+                <br>
+                <p>Once again, <span class="highlight">Happy Belated Birthday Sakinaaa!</span> I hope your day is as wonderful as you are.</p>
+                <br>
+                <p>With love,<br>Your friend</p>
+            </div>
+        </section>
+        
+        <!-- Interactive Section -->
+        <section id="interactiveSection" class="interactive-section hidden">
+            <h2>Just Like Before</h2>
+            <p class="question">"Pachi vaat karse marasi?"</p>
+            <div class="funny-text">"Na kaine joile... 😉 (I dare you!)"</div>
+            
+            <div class="button-container">
+                <button class="choice-btn yes-btn" id="yesBtn">Yes</button>
+                <button class="choice-btn no-btn" id="noBtn">No</button>
+            </div>
+            
+            <!-- Yes Result -->
+            <div id="yesResultContainer" class="hidden">
+                <div class="result">
+                    <p style="font-size: 1.5rem; color: #d63384; margin-bottom: 15px; line-height: 1.4;">"I knew it! Marasi vaat karwa vagar rai nai sakti!"</p>
+                    <div class="result-img-container">
+                        <!-- Your local end.jpeg image -->
+                        <img src="end.jpeg" alt="Friends together" class="result-img" id="endImage">
+                    </div>
+                    <p class="popup-text">Chal msg kr</p>
+                    <!-- WhatsApp link with your number -->
+                    <a href="https://wa.me/919082857045?text=Hey%20Sakina!%20I%20just%20saw%20the%20website%20you%20made%20for%20me.%20Let's%20talk!%20❤️" class="whatsapp-btn" id="yesWhatsappBtn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Click here to message
+                    </a>
+                </div>
+            </div>
+            
+            <!-- No Result -->
+            <div id="noResultContainer" class="hidden">
+                <div class="result">
+                    <p style="font-size: 1.5rem; color: #d63384; margin-bottom: 15px; line-height: 1.4;">"Tari naa ma pan tari haa che! 😊"</p>
+                    <div class="result-img-container">
+                        <!-- Same end.jpeg image for No -->
+                        <img src="end.jpeg" alt="Friends together" class="result-img" id="noEndImage">
+                    </div>
+                    <p class="popup-text">Chal msg kr</p>
+                    <!-- Same WhatsApp link -->
+                    <a href="https://wa.me/919082857045?text=Hey%20Sakina!%20I%20just%20saw%20the%20website%20you%20made%20for%20me.%20Let's%20talk!%20❤️" class="whatsapp-btn" id="noWhatsappBtn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Click here to message
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer>
+            <p>Created with ❤️ for Sakina's Birthday | Developed By Moiz Rampurawala</p>
+        </footer>
+    </div>
+
+    <script>
+        // Memory data with your local images
+        const memories = [
+            {
+                id: 1,
+                title: "Our First Hangout",
+                date: "June 2022",
+                description: "Remember when we first hung out at that café? We talked for hours about everything and nothing.",
+                image: "photo1.jpeg"
+            },
+            {
+                id: 2,
+                title: "Movie Nights",
+                date: "August 2022",
+                description: "All those movie nights we had, with popcorn and endless conversations afterwards.",
+                image: "photo2.jpeg"
+            },
+            {
+                id: 3,
+                title: "Birthday Celebration",
+                date: "December 2022",
+                description: "Celebrating your last birthday together was so much fun! The cake, the laughter, the memories.",
+                image: "photo3.jpeg"
+            },
+            {
+                id: 4,
+                title: "Long Walks",
+                date: "March 2023",
+                description: "Those long walks in the park where we would solve all the world's problems and share our dreams.",
+                image: "photo4.jpeg"
+            },
+            {
+                id: 5,
+                title: "Food Adventures",
+                date: "May 2023",
+                description: "Trying out new restaurants and food places was always an adventure with you.",
+                image: "photo5.jpeg"
+            },
+            {
+                id: 6,
+                title: "Late Night Talks",
+                date: "July 2023",
+                description: "The late night phone calls that would last for hours, sharing stories and secrets.",
+                image: "photo6.jpeg"
+            },
+            {
+                id: 7,
+                title: "Late Night Talks",
+                date: "July 2023",
+                description: "The late night phone calls that would last for hours, sharing stories and secrets.",
+                image: "photo7.jpeg"
+            },
+            {
+                id: 8,
+                title: "Late Night Talks",
+                date: "July 2023",
+                description: "The late night phone calls that would last for hours, sharing stories and secrets.",
+                image: "photo8.jpeg"
+            },
+            {
+                id: 9,
+                title: "Late Night Talks",
+                date: "July 2023",
+                description: "The late night phone calls that would last for hours, sharing stories and secrets.",
+                image: "photo9.jpeg"
+            },
+            {
+                id: 10,
+                title: "Late Night Talks",
+                date: "July 2023",
+                description: "The late night phone calls that would last for hours, sharing stories and secrets.",
+                image: "photo10.jpeg"
+            },
+            {
+                id: 11,
+                title: "Late Night Talks",
+                date: "July 2023",
+                description: "The late night phone calls that would last for hours, sharing stories and secrets.",
+                image: "photo11.jpeg"
+            },
+            {
+                id: 12,
+                title: "Late Night Talks",
+                date: "July 2023",
+                description: "The late night phone calls that would last for hours, sharing stories and secrets.",
+                image: "photo12.jpeg"
+            },
+            {
+                id: 13,
+                title: "Late Night Talks",
+                date: "July 2023",
+                description: "The late night phone calls that would last for hours, sharing stories and secrets.",
+                image: "photo13.jpeg"
+            },
+            {
+                id: 14,
+                title: "Late Night Talks",
+                date: "July 2023",
+                description: "The late night phone calls that would last for hours, sharing stories and secrets.",
+                image: "photo14.jpeg"
+            },
+            {
+                id: 15,
+                title: "Late Night Talks",
+                date: "July 2023",
+                description: "The late night phone calls that would last for hours, sharing stories and secrets.",
+                image: "photo15.jpeg"
+            },
+            {
+                id: 16,
+                title: "Late Night Talks",
+                date: "July 2023",
+                description: "The late night phone calls that would last for hours, sharing stories and secrets.",
+                image: "photo16.jpeg"
+            },
+            {
+                id: 17,
+                title: "Late Night Talks",
+                date: "July 2023",
+                description: "The late night phone calls that would last for hours, sharing stories and secrets.",
+                image: "photo17.jpeg"
+            },
+            {
+                id: 18,
+                title: "Late Night Talks",
+                date: "July 2023",
+                description: "The late night phone calls that would last for hours, sharing stories and secrets.",
+                image: "photo18.jpeg"
+            },
+            {
+                id: 19,
+                title: "Late Night Talks",
+                date: "July 2023",
+                description: "The late night phone calls that would last for hours, sharing stories and secrets.",
+                image: "photo19.jpeg"
+            },
+            {
+                id: 20,
+                title: "Late Night Talks",
+                date: "July 2023",
+                description: "The late night phone calls that would last for hours, sharing stories and secrets.",
+                image: "photo20.jpeg"
+            },
+            {
+                id: 21,
+                title: "Late Night Talks",
+                date: "July 2023",
+                description: "The late night phone calls that would last for hours, sharing stories and secrets.",
+                image: "photo21.jpeg"
+            },
+            {
+                id: 22,
+                title: "Late Night Talks",
+                date: "July 2023",
+                description: "The late night phone calls that would last for hours, sharing stories and secrets.",
+                image: "photo22.jpeg"
+            },
+            {
+                id: 23,
+                title: "Late Night Talks",
+                date: "July 2023",
+                description: "The late night phone calls that would last for hours, sharing stories and secrets.",
+                image: "photo23.jpeg"
+            }
+        ];
+
+        // Gujarati phrases for the "No" button
+        const gujaratiPhrases = [
+            "Chalnee!!",
+            "Aam karse!",
+            "Pakkuu!",
+            "Sochile ek vaar",
+            "Chal aavi ja!",
+            "Kem cho?",
+            "Majja aavse!",
+            "Evo to nai!",
+            "Hoy to hoy!",
+            "Bau saaru!"
+        ];
+
+        // DOM Elements
+        const welcomeOverlay = document.getElementById('welcomeOverlay');
+        const enterBtn = document.getElementById('enterBtn');
+        const mainContent = document.getElementById('mainContent');
+        const endImage = document.getElementById('endImage');
+        const noEndImage = document.getElementById('noEndImage');
+        
+        const memoriesSection = document.getElementById('memoriesSection');
+        const messageSection = document.getElementById('messageSection');
+        const interactiveSection = document.getElementById('interactiveSection');
+        
+        const memoriesBtn = document.getElementById('memoriesBtn');
+        const messageBtn = document.getElementById('messageBtn');
+        const interactiveBtn = document.getElementById('interactiveBtn');
+        
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const yesResultContainer = document.getElementById('yesResultContainer');
+        const noResultContainer = document.getElementById('noResultContainer');
+        const yesWhatsappBtn = document.getElementById('yesWhatsappBtn');
+        const noWhatsappBtn = document.getElementById('noWhatsappBtn');
+        const funnyText = document.querySelector('.funny-text');
+        
+        // Image Modal Elements
+        const imageModal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const closeModal = document.getElementById('closeModal');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        // Memory Gallery
+        const memoryGallery = document.querySelector('.memory-gallery');
+        
+        // Variables for interactive section
+        let noClickCount = 0;
+        let currentPhraseIndex = 0;
+        let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        let imagesLoaded = 0;
+        let totalImages = memories.length + 1; // +1 for end.jpeg
+        
+        // Variables for image modal
+        let currentImageIndex = 0;
+        
+        // Function to check if all images are loaded
+        function checkAllImagesLoaded() {
+            imagesLoaded++;
+            if (imagesLoaded === totalImages) {
+                console.log('All images loaded successfully');
+                // Remove any loading indicators if needed
+            }
+        }
+        
+        // Function to handle image loading errors
+        function handleImageError(img, fallbackUrl = null) {
+            console.log(`Failed to load image: ${img.src}`);
+            if (fallbackUrl) {
+                img.src = fallbackUrl;
+            } else {
+                // Create a placeholder image with text
+                img.onerror = null; // Prevent infinite loop
+                img.style.display = 'none';
+                const container = img.parentElement;
+                const placeholder = document.createElement('div');
+                placeholder.style.width = '100%';
+                placeholder.style.height = '100%';
+                placeholder.style.backgroundColor = '#f0f0f0';
+                placeholder.style.display = 'flex';
+                placeholder.style.alignItems = 'center';
+                placeholder.style.justifyContent = 'center';
+                placeholder.style.color = '#999';
+                placeholder.style.fontSize = '14px';
+                placeholder.style.textAlign = 'center';
+                placeholder.style.padding = '10px';
+                placeholder.textContent = 'Memory Photo';
+                container.appendChild(placeholder);
+            }
+            checkAllImagesLoaded();
+        }
+        
+        // Initialize memory cards with local images
+        function initMemoryGallery() {
+            memoryGallery.innerHTML = '';
+            
+            memories.forEach((memory, index) => {
+                const memoryCard = document.createElement('div');
+                memoryCard.className = 'memory-card';
+                memoryCard.style.animationDelay = `${index * 0.1}s`;
+                
+                memoryCard.innerHTML = `
+                    <div class="image-container" data-index="${index}">
+                        <img src="${memory.image}" alt="${memory.title}" class="memory-img" loading="lazy" 
+                             onload="checkAllImagesLoaded()" 
+                             onerror="handleImageError(this)">
+                    </div>
+                    <div class="memory-content">
+                        <h3 class="memory-title">${memory.title}</h3>
+                        <p class="memory-date">${memory.date}</p>
+                        <p class="memory-desc">${memory.description}</p>
+                    </div>
+                `;
+                
+                memoryGallery.appendChild(memoryCard);
+            });
+            
+            // Add click event listeners to all image containers
+            const imageContainers = document.querySelectorAll('.image-container');
+            imageContainers.forEach(container => {
+                container.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    openImageModal(index);
+                });
+            });
+        }
+        
+        // Open image modal with specific image
+        function openImageModal(index) {
+            if (index >= 0 && index < memories.length) {
+                currentImageIndex = index;
+                const memory = memories[currentImageIndex];
+                
+                modalImage.src = memory.image;
+                modalTitle.textContent = `${memory.title} - ${memory.date}`;
+                
+                // Show modal
+                imageModal.style.display = 'flex';
+                
+                // Prevent body scrolling
+                document.body.style.overflow = 'hidden';
+                
+                // Add keyboard navigation
+                document.addEventListener('keydown', handleKeyDown);
+            }
+        }
+        
+        // Close image modal
+        function closeImageModal() {
+            imageModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            document.removeEventListener('keydown', handleKeyDown);
+        }
+        
+        // Show previous image
+        function showPrevImage() {
+            currentImageIndex = (currentImageIndex - 1 + memories.length) % memories.length;
+            const memory = memories[currentImageIndex];
+            
+            modalImage.src = memory.image;
+            modalTitle.textContent = `${memory.title} - ${memory.date}`;
+        }
+        
+        // Show next image
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % memories.length;
+            const memory = memories[currentImageIndex];
+            
+            modalImage.src = memory.image;
+            modalTitle.textContent = `${memory.title} - ${memory.date}`;
+        }
+        
+        // Handle keyboard navigation
+        function handleKeyDown(e) {
+            if (e.key === 'Escape') {
+                closeImageModal();
+            } else if (e.key === 'ArrowLeft') {
+                showPrevImage();
+            } else if (e.key === 'ArrowRight') {
+                showNextImage();
+            }
+        }
+        
+        // Set up the end images
+        function setupEndImages() {
+            // Yes result image
+            endImage.onload = checkAllImagesLoaded;
+            endImage.onerror = function() {
+                handleImageError(endImage, 'https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');
+            };
+            
+            // No result image (same as yes)
+            noEndImage.onload = function() {
+                // Don't count this as separate image load
+                console.log('No result image loaded');
+            };
+            noEndImage.onerror = function() {
+                handleImageError(noEndImage, 'https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');
+            };
+        }
+        
+        // Welcome Animation
+        function hideWelcomeOverlay() {
+            // Fade out the welcome overlay
+            welcomeOverlay.style.opacity = '0';
+            
+            // After fade out, hide it and show main content
+            setTimeout(() => {
+                welcomeOverlay.style.display = 'none';
+                mainContent.style.display = 'block';
+                
+                // Initialize the memory gallery and end images
+                initMemoryGallery();
+                setupEndImages();
+                
+                // Scroll to top smoothly
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 1000);
+        }
+        
+        // Navigation Functions
+        function showMemories() {
+            memoriesSection.classList.remove('hidden');
+            messageSection.classList.add('hidden');
+            interactiveSection.classList.add('hidden');
+            
+            // Scroll to memories section
+            memoriesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
+        function showMessage() {
+            memoriesSection.classList.add('hidden');
+            messageSection.classList.remove('hidden');
+            interactiveSection.classList.add('hidden');
+            
+            // Scroll to message section
+            messageSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
+        function showInteractive() {
+            memoriesSection.classList.add('hidden');
+            messageSection.classList.add('hidden');
+            interactiveSection.classList.remove('hidden');
+            
+            // Reset the interactive section
+            resetInteractiveSection();
+            
+            // Scroll to interactive section
+            interactiveSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
+        // Reset interactive section to initial state
+        function resetInteractiveSection() {
+            noClickCount = 0;
+            currentPhraseIndex = 0;
+            noBtn.textContent = "No";
+            noBtn.style.transform = "none";
+            noBtn.style.backgroundColor = "#f44336";
+            noBtn.style.fontSize = "1.3rem";
+            yesResultContainer.classList.add('hidden');
+            noResultContainer.classList.add('hidden');
+            
+            // Reset funny text
+            funnyText.innerHTML = '"Na kaine joile... 😉 (I dare you!)"';
+            funnyText.style.color = "#ff6b9d";
+        }
+        
+        // Create Party Popper Effect
+        function createPartyPopper() {
+            const partyPopper = document.createElement('div');
+            partyPopper.className = 'party-popper';
+            document.body.appendChild(partyPopper);
+            
+            // Create confetti particles
+            const colors = ['#ff6b9d', '#ff8fab', '#ffd166', '#4CAF50', '#2196F3', '#9C27B0'];
+            
+            for (let i = 0; i < 100; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'popper-particle';
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.animationDelay = `${Math.random() * 0.5}s`;
+                
+                // Random size
+                const size = 10 + Math.random() * 15;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                partyPopper.appendChild(particle);
+            }
+            
+            // Create additional confetti
+            const confettiContainer = document.createElement('div');
+            confettiContainer.className = 'confetti-container';
+            document.body.appendChild(confettiContainer);
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.animationDelay = `${Math.random() * 1}s`;
+                
+                // Random shape
+                if (Math.random() > 0.5) {
+                    confetti.style.borderRadius = '50%';
+                } else {
+                    confetti.style.width = '15px';
+                    confetti.style.height = '5px';
+                }
+                
+                confettiContainer.appendChild(confetti);
+            }
+            
+            // Remove after animation completes
+            setTimeout(() => {
+                partyPopper.remove();
+                confettiContainer.remove();
+            }, 3000);
+        }
+        
+        // Create Celebration Effect (confetti + popper)
+        function createCelebration() {
+            createPartyPopper();
+            createConfetti();
+        }
+        
+        // Interactive Section Functions - When she clicks YES
+        function handleYesClick() {
+            yesResultContainer.classList.remove('hidden');
+            noResultContainer.classList.add('hidden');
+            
+            // Update funny text
+            funnyText.innerHTML = '"See? I knew you\'d say Yes! 😊"';
+            funnyText.style.color = "#4CAF50";
+            
+            // Create party popper effect
+            createCelebration();
+            
+            // Scroll to result
+            yesResultContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Add vibration on mobile (if supported)
+            if (isMobile && navigator.vibrate) {
+                navigator.vibrate([100, 50, 100, 50, 100]);
+            }
+        }
+        
+        // Interactive Section Functions - When she clicks NO
+        function handleNoClick() {
+            noClickCount++;
+            
+            // Change button text to Gujarati phrase
+            if (currentPhraseIndex < gujaratiPhrases.length) {
+                noBtn.textContent = gujaratiPhrases[currentPhraseIndex];
+                currentPhraseIndex++;
+            } else {
+                // If we've used all phrases, start from beginning
+                currentPhraseIndex = 0;
+                noBtn.textContent = gujaratiPhrases[currentPhraseIndex];
+                currentPhraseIndex++;
+            }
+            
+            // Adjust movement for mobile vs desktop
+            const maxDistance = isMobile ? 150 : 300;
+            const moveDistance = Math.min(noClickCount * (isMobile ? 30 : 50), maxDistance);
+            const angle = Math.random() * Math.PI * 2;
+            const x = Math.cos(angle) * moveDistance;
+            const y = Math.sin(angle) * moveDistance;
+            
+            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+            
+            // Make button smaller on more clicks
+            const scale = Math.max(0.5, 1 - noClickCount * 0.08);
+            noBtn.style.transform += ` scale(${scale})`;
+            
+            // Change button color randomly
+            const colors = ['#f44336', '#ff6b6b', '#ff8fab', '#ff5252', '#ff4081'];
+            noBtn.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Reduce font size gradually
+            const fontSize = Math.max(0.8, 1.3 - noClickCount * 0.08);
+            noBtn.style.fontSize = `${fontSize}rem`;
+            
+            // Add shake animation
+            noBtn.classList.add('shake');
+            setTimeout(() => {
+                noBtn.classList.remove('shake');
+            }, 500);
+            
+            // Update funny text based on click count
+            updateFunnyText();
+            
+            // If she clicks No 10 times, show the "No" result
+            if (noClickCount >= 10) {
+                showNoResult();
+            }
+            
+            // Add vibration on mobile (if supported)
+            if (isMobile && navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+        }
+        
+        // Show the "No" result after many attempts
+        function showNoResult() {
+            noResultContainer.classList.remove('hidden');
+            yesResultContainer.classList.add('hidden');
+            
+            // Update funny text
+            funnyText.innerHTML = '"Finally! 😅"';
+            funnyText.style.color = "#ff6b9d";
+            
+            // Scroll to result
+            noResultContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Add a little celebration for persistence
+            createConfetti();
+            
+            // Play a funny sound (in real implementation)
+            console.log("Playing funny sound: Finally got it!");
+        }
+        
+        function updateFunnyText() {
+            const funnyTexts = [
+                '"Still trying? 😂 I told you it\'s impossible!"',
+                '"You\'re persistent, I\'ll give you that! 😄"',
+                '"Getting closer... just kidding! 😜"',
+                '"This is getting ridiculous! 🤣"',
+                '"Okay, you\'re really determined! 👏"',
+                '"You know it\'s going to be Yes anyway! 😉"',
+                '"Just give up and click Yes already! 🙏"',
+                '"I admire your determination! 💪"',
+                '"This is like a cat chasing a laser pointer! 😹"',
+                '"Bavvvv Zidiiii Cheeee! 😹"',
+                '"You\'re making this way harder than it needs to be! 😅"'
+            ];
+            
+            const index = Math.min(noClickCount - 1, funnyTexts.length - 1);
+            if (index >= 0) {
+                funnyText.innerHTML = funnyTexts[index];
+                funnyText.style.color = "#f44336";
+            }
+        }
+        
+        // WhatsApp Integration - Already set in HTML with your number
+        
+        // Event Listeners
+        enterBtn.addEventListener('click', hideWelcomeOverlay);
+        
+        memoriesBtn.addEventListener('click', showMemories);
+        messageBtn.addEventListener('click', showMessage);
+        interactiveBtn.addEventListener('click', showInteractive);
+        
+        yesBtn.addEventListener('click', handleYesClick);
+        noBtn.addEventListener('click', handleNoClick);
+        
+        // Image Modal Event Listeners
+        closeModal.addEventListener('click', closeImageModal);
+        prevBtn.addEventListener('click', showPrevImage);
+        nextBtn.addEventListener('click', showNextImage);
+        
+        // Close modal when clicking outside the image
+        imageModal.addEventListener('click', function(e) {
+            if (e.target === imageModal) {
+                closeImageModal();
+            }
+        });
+        
+        // Make the "No" button move when hovered (desktop) or touched (mobile)
+        if (isMobile) {
+            // For mobile, prevent default touch behavior
+            noBtn.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                if (noClickCount > 0 && noClickCount < 10) {
+                    // Slight movement on touch
+                    const smallAngle = Math.random() * Math.PI * 2;
+                    const smallX = Math.cos(smallAngle) * 15;
+                    const smallY = Math.sin(smallAngle) * 15;
+                    
+                    noBtn.style.transform = `translate(${smallX}px, ${smallY}px)`;
+                }
+            }, { passive: false });
+        } else {
+            // For desktop, hover effect
+            noBtn.addEventListener('mouseover', function() {
+                if (noClickCount > 0 && noClickCount < 10) {
+                    // Slight movement on hover after first few clicks
+                    const smallAngle = Math.random() * Math.PI * 2;
+                    const smallX = Math.cos(smallAngle) * 20;
+                    const smallY = Math.sin(smallAngle) * 20;
+                    
+                    noBtn.style.transform = `translate(${smallX}px, ${smallY}px)`;
+                }
+            });
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Make the Yes button pulse occasionally
+            setInterval(() => {
+                yesBtn.classList.add('pulse');
+                setTimeout(() => {
+                    yesBtn.classList.remove('pulse');
+                }, 2000);
+            }, 8000);
+            
+            // Add some floating animation to the welcome heart
+            const heart = document.querySelector('.heart-animation');
+            setInterval(() => {
+                heart.classList.toggle('floating');
+            }, 3000);
+            
+            // Add confetti effect on enter button click
+            enterBtn.addEventListener('click', () => {
+                createConfetti();
+            });
+        });
+        
+        // Confetti effect function
+        function createConfetti() {
+            const colors = ['#ff6b9d', '#ff8fab', '#c2e9fb', '#a3d9ff', '#ffd166', '#4CAF50', '#f44336'];
+            const confettiCount = isMobile ? 80 : 150;
+            
+            // Get viewport dimensions
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                
+                // Start confetti from top of screen
+                confetti.style.top = '-10px';
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.zIndex = '1001';
+                confetti.style.pointerEvents = 'none';
+                
+                // Random animation
+                const angle = (Math.random() * Math.PI / 4) - Math.PI / 8;
+                const velocity = 2 + Math.random() * 3;
+                const vx = Math.sin(angle) * velocity;
+                const vy = Math.cos(angle) * velocity;
+                
+                let x = parseFloat(confetti.style.left);
+                let y = -10;
+                let opacity = 1;
+                
+                const animateConfetti = () => {
+                    x += vx;
+                    y += vy;
+                    vy += 0.1;
+                    opacity -= 0.008;
+                    
+                    confetti.style.left = `${x}%`;
+                    confetti.style.top = `${y}px`;
+                    confetti.style.opacity = opacity;
+                    
+                    if (opacity > 0 && y < viewportHeight) {
+                        requestAnimationFrame(animateConfetti);
+                    } else {
+                        if (confetti.parentNode) {
+                            document.body.removeChild(confetti);
+                        }
+                    }
+                };
+                
+                document.body.appendChild(confetti);
+                requestAnimationFrame(animateConfetti);
+            }
+        }
+        
+        // Make functions globally available for inline event handlers
+        window.checkAllImagesLoaded = checkAllImagesLoaded;
+        window.handleImageError = handleImageError;
+    </script>
+</body>
+</html>
