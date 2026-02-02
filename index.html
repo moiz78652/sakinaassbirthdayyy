@@ -398,6 +398,7 @@
             font-weight: 600;
         }
         
+        
         /* Interactive Section */
         .interactive-section {
             background: rgba(255, 255, 255, 0.95);
@@ -415,7 +416,26 @@
             margin-bottom: 15px;
             line-height: 1.2;
         }
-        
+        /* Add this to your CSS section */
+.interactive-link {
+    color: var(--primary);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+
+.interactive-link:hover {
+    background-color: rgba(255, 107, 157, 0.1);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.interactive-link:active {
+    transform: translateY(0);
+}
         .question {
             font-size: clamp(1.5rem, 5vw, 2rem);
             color: var(--secondary);
@@ -566,6 +586,7 @@
                 opacity: 0;
             }
         }
+        
         
         /* Confetti Container */
         .confetti-container {
@@ -897,7 +918,7 @@
                 <p>Once again, <span class="highlight">Happy Belated Birthday Sakinaaa!</span> Take care and Always stay Happy!!</p>
                 <br>
                 <p>With love,<br>Your friend Moiz.</p>
-                <p>Emotional thaigayee hoii toa click on the "Fun part" button.</p>
+                <p>Emotional thaigayee hoii toa click on the <span class="interactive-link" id="goToInteractive">Fun Part</span> button.</p>
             </div>
         </section>
         
@@ -919,12 +940,13 @@
                     <div class="result-img-container">
                         <!-- Your local end.jpeg image -->
                         <img src="end.jpeg" alt="Friends together" class="result-img" id="endImage">
+                        <p style="font-size: 1.5rem; color: #d63384; margin-bottom: 15px; line-height: 1.4;">"javade na kr attach thaijasu pacha 🌝"</p>
                     </div>
-                    <p class="popup-text">Chal msg kr</p>
                     <!-- WhatsApp link with your number -->
                     <a href="https://wa.me/919082857045?text=Hey%20Sakina here!%20I%20just%20saw%20the%20website%20you%20made%20for%20me.%20Let's%20talk!%20❤️" class="whatsapp-btn" id="yesWhatsappBtn" target="_blank">
                         <i class="fab fa-whatsapp"></i> Click here to message
                     </a>
+                    <p class="popup-text">Sochile toa pan..😗</p>
                 </div>
             </div>
             
@@ -935,12 +957,13 @@
                     <div class="result-img-container">
                         <!-- Same end.jpeg image for No -->
                         <img src="end.jpeg" alt="Friends together" class="result-img" id="noEndImage">
+                        <p style="font-size: 1.5rem; color: #d63384; margin-bottom: 15px; line-height: 1.4;">"javade na kr attach thaijasu pacha 🌝"</p>
                     </div>
-                    <p class="popup-text">Chal msg kr</p>
                     <!-- Same WhatsApp link -->
                     <a href="https://wa.me/919082857045?text=Hey%20Sakina here!%20I%20just%20saw%20the%20website%20you%20made%20for%20me.%20Let's%20talk!%20❤️" class="whatsapp-btn" id="noWhatsappBtn" target="_blank">
                         <i class="fab fa-whatsapp"></i> Click here to message
                     </a>
+                    <p class="popup-text">Sochile toa pan..😗</p>
                 </div>
             </div>
         </section>
@@ -1241,6 +1264,10 @@
                 });
             });
         }
+        // Add this line after your other event listeners
+document.getElementById('goToInteractive').addEventListener('click', function() {
+    showInteractive();
+});
         
         // Open image modal with specific image
         function openImageModal(index) {
